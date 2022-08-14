@@ -9,7 +9,7 @@ const cors = require("cors");
 const path = require("path");
 
 const userRoutes = require("./routes/user");
-//const sauceRoutes = require("./routes/sauce");
+const sauceRoutes = require("./routes/sauce");
 
 mongoose
   //connection à mongoDb
@@ -23,8 +23,8 @@ mongoose
   .catch(() => console.log("Connexion à MongoDB échouée!"));
 
 app.use(cors());
-//app.use("/images", express.static(path.join(__dirname, "images")));
+app.use("/images", express.static(path.join(__dirname, "images")));
 app.use("/api/auth", userRoutes);
-//app.use("/api/sauces", sauceRoutes);
+app.use("/api/sauces", sauceRoutes);
 app.use(helmet());
 module.exports = app;
